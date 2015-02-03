@@ -1,0 +1,46 @@
+テクスチャ
+	200x200まで
+		マリオ: 止まってる、歩いてる、ジャンプ
+		ブロック
+		地面
+		亀: 首を出している、ひっこめている
+	背景 = 1200x800
+
+ボード Board
+	サイズ: 魔法数
+	ステージ: stageA
+
+	初期化() setup()
+	更新() draw()
+
+ステージ Stage
+	位置   pos
+	サイズ dim ... dimension
+
+	地面   ground
+	障害物 blocks
+	マリオ mario
+	亀     enemy
+
+	更新() update()
+
+地面・障害物 Block
+	位置   pos
+	サイズ dim
+
+	表示() show()
+	衝突判定()
+
+マリオ Mario
+	位置   pos
+	サイズ dim
+
+	表示() show()
+	移動() move()
+
+亀
+	位置   pos
+	サイズ dim
+
+	表示() show()
+	移動() move()

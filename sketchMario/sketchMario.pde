@@ -1,9 +1,9 @@
 Stage stA;
 
 void setup() {
-  size(600, 400);
+  size(1200, 800);
   
-  stA = new Stage(0, 0, 1200, 400);
+  stA = new Stage(0, 0, 1200, 800);
 }
 
 void draw() {

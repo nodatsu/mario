@@ -9,19 +9,19 @@ class Stage {
     pos = new PVector(px, py);
     dim = new PVector(sx, sy);
     
-    mario = new Mario(225, 175);
+    mario = new Mario(450, 350);
     
-    ground.add(new Block(  0, 300, 100, 100));
-    ground.add(new Block(100, 300, 100, 100));
-    ground.add(new Block(200, 300, 100, 100));
-//    ground.add(new Block(300, 300, 100, 100));
-    ground.add(new Block(400, 300, 100, 100));
-    ground.add(new Block(500, 300, 100, 100));
+    ground.add(new Block(   0, 600, 200, 200));
+    ground.add(new Block( 200, 600, 200, 200));
+    ground.add(new Block( 400, 600, 200, 200));
+//    ground.add(new Block( 600, 300, 100, 100));
+    ground.add(new Block( 800, 600, 200, 200));
+    ground.add(new Block(1000, 600, 200, 200));
     
-    blocks.add(new Block(400, 100, 50, 50));
-    blocks.add(new Block(150, 250, 50, 50));
-    blocks.add(new Block(200, 200, 50, 50));
-    blocks.add(new Block(200, 250, 50, 50));
+    blocks.add(new Block(800, 200, 100, 100));
+    blocks.add(new Block(300, 500, 100, 100));
+    blocks.add(new Block(400, 400, 100, 100));
+    blocks.add(new Block(400, 500, 100, 100));
   }
  
   void update() {

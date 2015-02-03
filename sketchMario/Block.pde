@@ -20,4 +20,12 @@ class Block {
     popMatrix();
   }
 
+  boolean col(Mario m) {
+    if (pos.y < m.pos.y + m.vel.y) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }

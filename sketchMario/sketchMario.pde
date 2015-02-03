@@ -12,4 +12,8 @@ void draw() {
   stA.update();
 }
 
+void keyPressed() {
+  stA.mario.vel.y -= 10;
+  stA.move();
+}
 

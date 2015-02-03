@@ -12,4 +12,7 @@ void draw() {
   stA.update();
 }
 
+void keyPressed() {
+  stA.mario.jump -= 100;
+}
 

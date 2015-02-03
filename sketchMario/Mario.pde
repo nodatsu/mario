@@ -1,17 +1,17 @@
 class Mario {
   PVector pos;
-  PVector size;
+  PVector dim;
   
   Mario(float px, float py) {
     pos = new PVector(px, py);
-    size = new PVector(100, 100);
+    dim = new PVector(50, 50);
   }
   
   void update() {
     pushMatrix();
     translate(pos.x, pos.y);
     fill(0);
-    ellipse(0, 0, size.x, size.y);
+    ellipse(0, 0, dim.x, dim.y);
     popMatrix();
   } 
 }

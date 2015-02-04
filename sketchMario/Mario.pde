@@ -2,19 +2,16 @@ class Mario {
   PVector pos;
   PVector dim;
   PVector vel;
-  PVector acc;
 
   Mario(float px, float py) {
     pos = new PVector(px, py);
     dim = new PVector(50, 50);
     vel = new PVector(0, 0);
-    acc = new PVector(0, 0);
   }
 
   void update() {
     pos.add(vel);
-    vel.add(acc);
-    acc.set(gravity);
+    vel.add(gravity);
     
     fill(255, 0, 0);
     rect(pos.x, pos.y, dim.x, dim.y);

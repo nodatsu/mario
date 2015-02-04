@@ -2,11 +2,16 @@ class Stage {
   PVector pos;
   PVector dim;
   PImage img;
+
+  AudioPlayer soundBGM;
   
   ArrayList<Block> blocks = new ArrayList<Block>();
   Mario mario;
   
   Stage() {
+    soundBGM = minim.loadFile("BGM.mp3");
+    soundBGM.loop();
+
     pos = new PVector(0, 0);
     dim = new PVector(width, height);
     img = loadImage("bgA.png");

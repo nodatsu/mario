@@ -1,4 +1,6 @@
 class Mario {
+  AudioPlayer soundJump;
+
   PVector pos;
   PVector dim;
   PVector vel;
@@ -8,6 +10,8 @@ class Mario {
   boolean dirR;
   
   Mario(float px, float py) {
+    soundJump = minim.loadFile("jump.mp3");
+
     pos = new PVector(px, py);
     dim = new PVector(50, 50);
     vel = new PVector(0, 0);
@@ -61,7 +65,12 @@ class Mario {
     switch (k) {
       case LEFT:  vel.x = max(-5.0, vel.x - 5.0);  break;
       case RIGHT: vel.x = min( 5.0, vel.x + 5.0);  break;
-      case UP:    if (ground) vel.y -= 15.0;  break;
+      case UP:    if (ground) {
+                    vel.y -= 15.0;
+                    soundJump.play();
+                    soundJump.rewind();
+                  }
+                  break;
       case DOWN:  vel.y += 1.0;  break;
     }
   }  

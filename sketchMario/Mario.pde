@@ -10,7 +10,7 @@ class Mario {
     dim = new PVector(50, 50);
     vel = new PVector(0, 0);
     gravity = new PVector(0, 0.5);
-    img = loadImage("marioA.gif");
+    img = loadImage("ProfessorT_stand.png");
   }
 
   void update() {
@@ -26,7 +26,7 @@ class Mario {
       // 着地している場合は横方向を停止する
       case LEFT:  vel.x = min(-5.0, vel.x - 5.0);  break;
       case RIGHT: vel.x = min( 5.0, vel.x + 5.0);  break;
-      case UP:    vel.y -= 10.0;  break;
+      case UP:    vel.y -= 15.0;  break;
       case DOWN:  vel.y += 1.0;  break;
     }
   }  

@@ -28,7 +28,8 @@ class Block {
       if (mcLL.y <= bcUL.y && mcLL.y + m.vel.y >= bcUL.y) {
         m.pos.y = bcUL.y - m.dim.y;
         m.vel.y = 0;
-        if (!keyPressed) m.vel.x = 0;
+        
+        m.ground = true;
       }
     } 
     

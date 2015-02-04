@@ -11,6 +11,8 @@ class Stage {
     dim = new PVector(width, height);
     img = loadImage("bgA.png");
     
+    blocks.add(new Block(0, 0, 1200, 10));
+    
     blocks.add(new Block(   0, 600, 200, 200));
     blocks.add(new Block( 200, 600, 200, 200));
     blocks.add(new Block( 400, 600, 200, 200));

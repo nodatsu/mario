@@ -1,14 +1,12 @@
 import ddf.minim.*;
 
 Minim minim;
-
 Stage stageA;
 
 void setup() {
   size(1200, 800);
 
   minim = new Minim(this);
-  
   stageA = new Stage();
 }
 

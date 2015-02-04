@@ -1,9 +1,10 @@
 class Stage {
+  AudioPlayer soundBGM;
+
   PVector pos;
   PVector dim;
+  PVector view;
   PImage img;
-
-  AudioPlayer soundBGM;
   
   ArrayList<Block> blocks = new ArrayList<Block>();
   Mario mario;
@@ -13,13 +14,15 @@ class Stage {
     soundBGM.loop();
 
     pos = new PVector(0, 0);
-    dim = new PVector(width, height);
+    dim = new PVector(width * 2, height);
+    view = new PVector(width, height);
     img = loadImage("bgA.png");
     
-    blocks.add(new Block(   0, 0, 1200, 10));
-    blocks.add(new Block(   0, 790, 1200, 10));
-    blocks.add(new Block(   0, 0, 10, 800));
-    blocks.add(new Block(   1190, 0, 10, 800));
+    int border = 10;
+    blocks.add(new Block(   0, 0, dim.x, border));
+    blocks.add(new Block(   0, dim.y - border, dim.x, border));
+    blocks.add(new Block(   0, 0, border, dim.y));
+    blocks.add(new Block(   dim.x - border, 0, border, dim.y));
 
     
     blocks.add(new Block(   0, 600, 200, 200));
@@ -54,5 +57,7 @@ class Stage {
     
     mario.update();
     popMatrix();
+    
+    pos.x = max(-view.x, min(0, view.x / 2 - mario.pos.x));
   }
 }

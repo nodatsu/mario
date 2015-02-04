@@ -18,8 +18,3 @@ void keyPressed() {
   }
 }
 
-void keyReleased() {
-  if (key == CODED && (keyCode == LEFT || keyCode == RIGHT)) {
-    stageA.mario.stop();
-  }
-}

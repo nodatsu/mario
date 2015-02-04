@@ -26,13 +26,16 @@ class Block {
     // upper side
     if (mcLR.x > bcUL.x && mcLL.x < bcUR.x) {
       if (mcLL.y <= bcUL.y && mcLL.y + m.vel.y >= bcUL.y) {
+        m.pos.y = bcUL.y - m.dim.y;
         m.vel.y = 0;
+        if (!keyPressed) m.vel.x = 0;
       }
     } 
     
     // lower side
     if (mcUR.x > bcLL.x && mcUL.x < bcLR.x) {
       if (mcUL.y >= bcLL.y && mcUL.y + m.vel.y <= bcLL.y) {
+        m.pos.y = bcLL.y;
         m.vel.y = 0;
       }
     } 
@@ -40,6 +43,7 @@ class Block {
     // left side
     if (mcLR.y > bcUL.y && mcUR.y < bcLL.y) {
       if (mcUR.x <= bcUL.x && mcUR.x + m.vel.x >= bcUL.x) {
+        m.pos.x = bcUL.x - m.dim.x;
         m.vel.x = 0;
       }
     }
@@ -47,6 +51,7 @@ class Block {
     // right side
     if (mcLL.y > bcUR.y && mcUL.y < bcLR.y) {
       if (mcUL.x >= bcUR.x && mcUL.x + m.vel.x <= bcUR.x) {
+        m.pos.x = bcUR.x;
         m.vel.x = 0;
       }
     }

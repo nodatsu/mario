@@ -26,7 +26,7 @@ class Block {
     PVector mcLR = new PVector(m.pos.x + m.dim.x, m.pos.y + m.dim.y);
     
     // upper side
-    if (mcLR.x > bcUL.x && mcLL.x < bcUR.x) {
+    if ((mcLR.x > bcUL.x && mcLL.x < bcUR.x) || (mcLR.x + m.vel.x > bcUL.x && mcLL.x + m.vel.x < bcUR.x)) {
       if (mcLL.y <= bcUL.y && mcLL.y + m.vel.y >= bcUL.y) {
         m.vel.y = 0;
         m.pos.y = bcUL.y - m.dim.y;
@@ -35,7 +35,7 @@ class Block {
     } 
     
     // lower side
-    if (mcUR.x > bcLL.x && mcUL.x < bcLR.x) {
+    if ((mcUR.x > bcLL.x && mcUL.x < bcLR.x) || (mcUR.x + m.vel.x > bcLL.x && mcUL.x + m.vel.x < bcLR.x)) {
       if (mcUL.y >= bcLL.y && mcUL.y + m.vel.y <= bcLL.y) {
         m.vel.y = 0;
         m.pos.y = bcLL.y;
@@ -43,7 +43,7 @@ class Block {
     }
     
     // left side
-    if (mcLR.y > bcUL.y && mcUR.y < bcLL.y) {
+    if ((mcLR.y > bcUL.y && mcUR.y < bcLL.y) || (mcLR.y + m.vel.y > bcUL.y && mcUR.y + m.vel.y < bcLL.y)) {
       if (mcUR.x <= bcUL.x && mcUR.x + m.vel.x >= bcUL.x) {
         m.vel.x = 0;
         m.pos.x = bcUL.x - m.dim.x;
@@ -51,7 +51,7 @@ class Block {
     }
     
     // right side
-    if (mcLL.y > bcUR.y && mcUL.y < bcLR.y) {
+    if ((mcLL.y > bcUR.y && mcUL.y < bcLR.y) || (mcLL.y + m.vel.y > bcUR.y && mcUL.y + m.vel.y < bcLR.y)) {
       if (mcUL.x >= bcUR.x && mcUL.x + m.vel.x <= bcUR.x) {
         m.vel.x = 0;
         m.pos.x = bcUR.x;

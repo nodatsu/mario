@@ -1,6 +1,6 @@
 Stage stageA;
 
-PVector gravity = new PVector(0, 0.1);
+PVector gravity = new PVector(0, 0.2);
 
 void setup() {
   size(1200, 800);

@@ -9,7 +9,7 @@ class Mario {
     pos = new PVector(px, py);
     dim = new PVector(50, 50);
     vel = new PVector(0, 0);
-    gravity = new PVector(0, 0.1);
+    gravity = new PVector(0, 0.5);
     img = loadImage("marioA.gif");
   }
 
@@ -17,15 +17,16 @@ class Mario {
     pos.add(vel);
     vel.add(gravity);
     
-    fill(255, 0, 0);
     image(img, pos.x, pos.y, dim.x, dim.y);
   }
   
   void input(int k) {
     switch (k) {
-      case LEFT:  vel.x -= 1.0;  break;
-      case RIGHT: vel.x += 1.0;  break;
-      case UP:    vel.y -= 1.0;  break;
+      // ジャンプは着地しているときのみ
+      // 着地している場合は横方向を停止する
+      case LEFT:  vel.x = min(-5.0, vel.x - 5.0);  break;
+      case RIGHT: vel.x = min( 5.0, vel.x + 5.0);  break;
+      case UP:    vel.y -= 10.0;  break;
       case DOWN:  vel.y += 1.0;  break;
     }
   }  

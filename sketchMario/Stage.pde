@@ -9,10 +9,15 @@ class Stage {
     pos = new PVector(0, 0);
     dim = new PVector(width, height);
     
+    blocks.add(new Block(   0,   0,  1200,  10));
+    blocks.add(new Block(   0, 800,  1200,  10));
+    blocks.add(new Block(   0,   0,    10, 800));
+    blocks.add(new Block(1190,   0,    10, 800));
+    
     blocks.add(new Block(   0, 600, 200, 200));
     blocks.add(new Block( 200, 600, 200, 200));
     blocks.add(new Block( 400, 600, 200, 200));
-//    ground.add(new Block( 600, 600, 200, 200));
+//    blocks.add(new Block( 600, 600, 200, 200));
     blocks.add(new Block( 800, 600, 200, 200));
     blocks.add(new Block(1000, 600, 200, 200));
     

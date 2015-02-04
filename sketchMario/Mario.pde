@@ -24,7 +24,7 @@ class Mario {
     switch (k) {
       case LEFT:  vel.x -= 1.0;  break;
       case RIGHT: vel.x += 1.0;  break;
-      case UP:    vel.y -= 10;   break;
+      case UP:    vel.y -= 20;   break;
     }
   }
 }

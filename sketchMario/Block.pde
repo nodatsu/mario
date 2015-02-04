@@ -29,7 +29,7 @@ class Block {
     }
     // under
     if ((m.pos.y >= pos.y + dim.y && m.pos.y + m.vel.y <= pos.y + dim.y) && (m.pos.x + m.dim.x > pos.x && m.pos.x < pos.x + dim.x)) {
-      if (m.vel.x < 0)  m.vel.y = 0;
+      if (m.vel.y < 0)  m.vel.y = 0;
     }
 
     

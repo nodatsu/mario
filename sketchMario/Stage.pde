@@ -42,6 +42,7 @@ class Stage {
       b.show();
     }
     
+    mario.ground = false;
     for (Block b : blocks) {
       b.regist(mario);
     }

@@ -4,6 +4,7 @@ class Mario {
   PVector vel;
   PVector gravity;
   PImage img;
+  boolean ground;
 
   Mario(float px, float py) {
     pos = new PVector(px, py);
@@ -11,22 +12,25 @@ class Mario {
     vel = new PVector(0, 0);
     gravity = new PVector(0, 0.5);
     img = loadImage("ProfessorT_stand.png");
+    ground = false;
   }
 
   void update() {
     pos.add(vel);
     vel.add(gravity);
     
+    if (!keyPressed && ground) {
+      vel.x = 0;
+    }
+    
     image(img, pos.x, pos.y, dim.x, dim.y);
   }
   
   void input(int k) {
     switch (k) {
-      // ジャンプは着地しているときのみ
-      // 着地している場合は横方向を停止する
-      case LEFT:  vel.x = min(-5.0, vel.x - 5.0);  break;
+      case LEFT:  vel.x = max(-5.0, vel.x - 5.0);  break;
       case RIGHT: vel.x = min( 5.0, vel.x + 5.0);  break;
-      case UP:    vel.y -= 15.0;  break;
+      case UP:    if (ground) vel.y -= 15.0;  break;
       case DOWN:  vel.y += 1.0;  break;
     }
   }  

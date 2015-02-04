@@ -30,6 +30,7 @@ class Block {
       if (mcLL.y <= bcUL.y && mcLL.y + m.vel.y >= bcUL.y) {
         m.vel.y = 0;
         m.pos.y = bcUL.y - m.dim.y;
+        m.ground = true;
       }
     } 
     

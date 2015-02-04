@@ -1,6 +1,7 @@
 class Stage {
   PVector pos;
   PVector dim;
+  PVector view;
   PImage img;
   
   ArrayList<Block> blocks = new ArrayList<Block>();
@@ -8,13 +9,14 @@ class Stage {
   
   Stage() {
     pos = new PVector(0, 0);
-    dim = new PVector(width, height);
+    dim = new PVector(width * 2, height);
+    view = new PVector(width, height);    
     img = loadImage("bgA.png");
     
     blocks.add(new Block(   0, 0, 1200, 10));
     blocks.add(new Block(   0, 790, 1200, 10));
     blocks.add(new Block(   0, 0, 10, 800));
-    blocks.add(new Block(   1190, 0, 10, 800));
+//    blocks.add(new Block(   1190, 0, 10, 800));
 
     
     blocks.add(new Block(   0, 600, 200, 200));
@@ -49,5 +51,7 @@ class Stage {
     
     mario.update();
     popMatrix();
+    
+    pos.x = max(0, view.x / 2 - mario.pos.x);
   }
 }

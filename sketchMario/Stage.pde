@@ -3,7 +3,6 @@ class Stage {
   PVector dim;
   PImage img;
   
-  ArrayList<Block> ground = new ArrayList<Block>();
   ArrayList<Block> blocks = new ArrayList<Block>();
   Mario mario;
   
@@ -12,12 +11,12 @@ class Stage {
     dim = new PVector(width, height);
     img = loadImage("bgA.png");
     
-    ground.add(new Block(   0, 600, 200, 200));
-    ground.add(new Block( 200, 600, 200, 200));
-    ground.add(new Block( 400, 600, 200, 200));
-//    ground.add(new Block( 600, 600, 200, 200));
-    ground.add(new Block( 800, 600, 200, 200));
-    ground.add(new Block(1000, 600, 200, 200));
+    blocks.add(new Block(   0, 600, 200, 200));
+    blocks.add(new Block( 200, 600, 200, 200));
+    blocks.add(new Block( 400, 600, 200, 200));
+//    blocks.add(new Block( 600, 600, 200, 200));
+    blocks.add(new Block( 800, 600, 200, 200));
+    blocks.add(new Block(1000, 600, 200, 200));
     
     blocks.add(new Block(800, 200, 100, 100));
     blocks.add(new Block(200, 500, 100, 100));
@@ -33,11 +32,12 @@ class Stage {
     fill(0, 255, 255);
     image(img, 0, 0, dim.x, dim.y);
     
-    for (Block b : ground) {
-      b.show();
-    }
     for (Block b : blocks) {
       b.show();
+    }
+    
+    for (Block b : blocks) {
+      b.regist(mario);
     }
     
     mario.update();

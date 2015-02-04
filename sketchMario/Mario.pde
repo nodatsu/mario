@@ -24,10 +24,15 @@ class Mario {
   
   void input(int k) {
     switch (k) {
-      case LEFT:  vel.x = max( -5.0, vel.x -  1.0);  break;
-      case RIGHT: vel.x = min(  5.0, vel.x +  1.0);  break;
+      case LEFT:  vel.x = max( -5.0, vel.x -  5.0);  break;
+      case RIGHT: vel.x = min(  5.0, vel.x +  5.0);  break;
       case UP:    vel.y = max(-20.0, vel.y - 10.0);  break;
-      case DOWN:  vel.y = min(  5.0, vel.y +  1.0);  break;
+      case DOWN:  vel.y = min(  5.0, vel.y +  5.0);  break;
     }
-  }  
+  }
+  
+  void stop() {
+    vel.x = 0;
+    vel.y = 0;
+  }
 }

@@ -11,3 +11,9 @@ void draw() {
   
   stageA.update();
 }
+
+void keyPressed() {
+  if (key == CODED) {
+    stageA.mario.input(keyCode);
+  }
+}

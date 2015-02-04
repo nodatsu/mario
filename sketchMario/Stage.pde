@@ -1,6 +1,7 @@
 class Stage {
   PVector pos;
   PVector dim;
+  PImage img;
   
   ArrayList<Block> ground = new ArrayList<Block>();
   ArrayList<Block> blocks = new ArrayList<Block>();
@@ -9,6 +10,7 @@ class Stage {
   Stage() {
     pos = new PVector(0, 0);
     dim = new PVector(width, height);
+    img = loadImage("bgA.png");
     
     ground.add(new Block(   0, 600, 200, 200));
     ground.add(new Block( 200, 600, 200, 200));
@@ -29,7 +31,7 @@ class Stage {
     pushMatrix();
     translate(pos.x, pos.y);
     fill(0, 255, 255);
-    rect(0, 0, dim.x, dim.y);
+    image(img, 0, 0, dim.x, dim.y);
     
     for (Block b : ground) {
       b.show();

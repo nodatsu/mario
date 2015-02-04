@@ -1,4 +1,6 @@
 class Mario {
+  AudioPlayer attack;
+  
   PVector pos;
   PVector dim;
   PVector vel;
@@ -7,6 +9,9 @@ class Mario {
   boolean ground;
 
   Mario(float px, float py) {
+    attack = minim.loadFile("attack.mp3", 2048);
+    attack.rewind();
+
     pos = new PVector(px, py);
     dim = new PVector(50, 50);
     vel = new PVector(0, 0);
@@ -30,7 +35,7 @@ class Mario {
     switch (k) {
       case LEFT:  vel.x = max(-5.0, vel.x - 5.0);  break;
       case RIGHT: vel.x = min( 5.0, vel.x + 5.0);  break;
-      case UP:    if (ground) vel.y -= 15.0;  break;
+      case UP:    if (ground) vel.y -= 15.0;  attack.play();  attack.rewind();  break;
       case DOWN:  vel.y += 1.0;  break;
     }
   }  

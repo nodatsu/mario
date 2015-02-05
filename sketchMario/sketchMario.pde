@@ -1,12 +1,13 @@
 import ddf.minim.*;
 
 Minim minim;
+
 Stage stageA;
 
 void setup() {
-  size(1200, 800);
-
   minim = new Minim(this);
+  size(1200, 800);
+  
   stageA = new Stage();
 }
 
@@ -16,13 +17,3 @@ void draw() {
   stageA.update();
 }
 
-void stop() {
-  minim.stop();
-  super.stop();
-}
-
-void keyPressed() {
-  if (key == CODED) {
-    stageA.mario.input(keyCode);
-  }
-}

@@ -5,73 +5,79 @@ class Mario {
   PVector dim;
   PVector vel;
   PVector gravity;
-  PImage imgStandR, imgStandL, imgJumpR, imgJumpL, img;
-  boolean ground;
-  boolean dirR;
-  
+  PImage imgWalkRight, imgWalkLeft, imgJumpRight, imgJumpLeft;
+  int jump;
+  boolean ground, right;
+
   Mario(float px, float py) {
-    soundJump = minim.loadFile("jump.mp3");
+    soundJump = minim.loadFile("jump.mp3", 2048);
+    soundJump.rewind();
 
     pos = new PVector(px, py);
     dim = new PVector(50, 50);
     vel = new PVector(0, 0);
     gravity = new PVector(0, 0.5);
-    imgStandR = loadImage("ProfessorT_standR.png");
-    imgJumpR = loadImage("ProfessorT_jumpR.png");
-    imgStandL = loadImage("ProfessorT_standL.png");
-    imgJumpL = loadImage("ProfessorT_jumpL.png");
-    img = imgStandR;
+    imgWalkRight = loadImage("ProfessorT_WalkRight.png");
+    imgWalkLeft = loadImage("ProfessorT_WalkLeft.png");
+    imgJumpRight = loadImage("ProfessorT_JumpRight.png");
+    imgJumpLeft = loadImage("ProfessorT_JumpLeft.png");
+    jump = 0;
     ground = false;
-    dirR = true;
+    right = true;
   }
 
   void update() {
     pos.add(vel);
     vel.add(gravity);
-    
-    if (!keyPressed && ground) {
+
+    if (!keyPressed && jump == 0) {
       vel.x = 0;
     }
-    
-    if (vel.x > 0) {
-      dirR = true;
-    }
-    else if (vel.x < 0) {
-      dirR = false;
-    }
-    else {}
-    
-    if (ground) {
-      if (dirR) {
-        img = imgStandR;
+
+    PImage img;
+    if (ground) {    
+      if (right) {
+        img = imgWalkRight;
       }
       else {
-        img = imgStandL;
+        img = imgWalkLeft;
       }
     }
     else {
-      if (dirR) {
-        img = imgJumpR;
+      if (right) {
+        img = imgJumpRight;
       }
       else {
-        img = imgJumpL;
+        img = imgJumpLeft;
       }
     }
-    
     image(img, pos.x, pos.y, dim.x, dim.y);
   }
-  
-  void input(int k) {
-    switch (k) {
-      case LEFT:  vel.x = max(-5.0, vel.x - 5.0);  break;
-      case RIGHT: vel.x = min( 5.0, vel.x + 5.0);  break;
-      case UP:    if (ground) {
-                    vel.y -= 15.0;
-                    soundJump.play();
-                    soundJump.rewind();
-                  }
-                  break;
-      case DOWN:  vel.y += 1.0;  break;
+
+  void input() {
+    if (keyLeft) {  
+      vel.x = max(-5.0, vel.x - 5.0);  
+      right = false;
     }
-  }  
+    if (keyRight) { 
+      vel.x = min( 5.0, vel.x + 5.0);
+      right = true;  
+    }
+    if (keyUp) {  
+      if (ground) {
+        vel.y -= 13.0;
+        jump++;
+        soundJump.rewind();
+        soundJump.play();
+      }
+      else if (jump == 1) {
+        vel.y -= 13.0;
+        jump++;
+      }
+    }
+    if (keyDown) {
+      vel.y += 1.0;  
+    }
+  }
 }
+

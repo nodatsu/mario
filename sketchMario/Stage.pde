@@ -1,4 +1,6 @@
 class Stage {
+  AudioPlayer bgm;
+
   PVector pos;
   PVector dim;
   PVector view;
@@ -8,6 +10,10 @@ class Stage {
   Mario mario;
   
   Stage() {
+    bgm = minim.loadFile("BGM.mp3", 2048);
+    bgm.rewind();
+    bgm.play();
+
     pos = new PVector(0, 0);
     dim = new PVector(width * 2, height);
     view = new PVector(width, height);    
@@ -26,7 +32,7 @@ class Stage {
     blocks.add(new Block( 800, 600, 200, 200));
     blocks.add(new Block(1000, 600, 200, 200));
     
-    blocks.add(new BlockHatena(800, 200, 100, 100));
+    blocks.add(new BlockHatena(800, 300, 100, 100));
     blocks.add(new Block(200, 500, 100, 100));
     blocks.add(new Block(300, 500, 100, 100));
     blocks.add(new Block(300, 400, 100, 100));
@@ -43,8 +49,8 @@ class Stage {
     for (Block b : blocks) {
       b.show();
     }
-    
-    mario.ground = false;
+
+    mario.ground = false;    
     for (Block b : blocks) {
       b.regist(mario);
     }
@@ -52,6 +58,6 @@ class Stage {
     mario.update();
     popMatrix();
     
-    pos.x = min(0, max(-view.x, view.x / 2 - mario.pos.x));
+    pos.x = max(-view.x, min(0, view.x / 2 - mario.pos.x));
   }
 }

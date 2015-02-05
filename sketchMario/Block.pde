@@ -31,6 +31,7 @@ class Block {
         m.vel.y = 0;
         m.pos.y = bcUL.y - m.dim.y;
         m.ground = true;
+        m.jump = 0;
       }
     } 
     

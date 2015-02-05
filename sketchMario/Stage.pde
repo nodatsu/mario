@@ -13,10 +13,10 @@ class Stage {
     view = new PVector(width, height);    
     img = loadImage("bgA.png");
     
-    blocks.add(new Block(   0, 0, 1200, 10));
-    blocks.add(new Block(   0, 790, 1200, 10));
-    blocks.add(new Block(   0, 0, 10, 800));
-//    blocks.add(new Block(   1190, 0, 10, 800));
+    blocks.add(new Block(   0, 0, dim.x, 10));
+    blocks.add(new Block(   0, dim.y - 10, dim.x, 10));
+    blocks.add(new Block(   0, 0, 10, dim.y));
+    blocks.add(new Block(   dim.x - 10, 0, 10, dim.y));
 
     
     blocks.add(new Block(   0, 600, 200, 200));
@@ -52,6 +52,6 @@ class Stage {
     mario.update();
     popMatrix();
     
-    pos.x = max(0, view.x / 2 - mario.pos.x);
+    pos.x = min(0, max(-view.x, view.x / 2 - mario.pos.x));
   }
 }
